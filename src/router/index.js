@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ImgDisplay from '@/components/ImgDisplay'
-import ItemListElement from '@/components/ItemListElement'
-import AuthPanel from '@/components/AuthPanel'
-import PhotoForm from '@/components/PhotoForm'
+// import ImgDisplay from '@/components/ImgDisplay'
+// import ItemListElement from '@/components/ItemListElement'
+// import AuthPanel from '@/components/AuthPanel'
+// import PhotoForm from '@/components/PhotoForm'
 import Index from '@/components/Index'
 import Login from '@/components/Login'
 import SignUp from '@/components/SignUp'
@@ -15,53 +15,53 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    // {
+    //   path: '/ImgDisplay',
+    //   name: 'ImgDisplay',
+    //   component: ImgDisplay
+    // },
+    // {
+    //   path: '/ItemListElement',
+    //   name: 'ItemListElement',
+    //   component: ItemListElement
+    // },
+    // {
+    //   path: '/AuthPanel',
+    //   name: 'AuthPanel',
+    //   component: AuthPanel
+    // },
+    // {
+    //   path: '/PhotoForm',
+    //   name: 'PhotoForm',
+    //   component: PhotoForm
+    // },
     {
-      path: '/ImgDisplay',
-      name: 'ImgDisplay',
-      component: ImgDisplay
-    },
-    {
-      path: '/ItemListElement',
-      name: 'ItemListElement',
-      component: ItemListElement
-    },
-    {
-      path: '/AuthPanel',
-      name: 'AuthPanel',
-      component: AuthPanel
-    },
-    {
-      path: '/PhotoForm',
-      name: 'PhotoForm',
-      component: PhotoForm
-    },
-    {
-      path: '/Index',
+      path: '/',
       name: 'Index',
       component: Index
     },
     {
-      path: '/Login',
+      path: '/login',
       name: 'Login',
       component: Login
     },
     {
-      path: '/SignUp',
+      path: '/signup',
       name: 'SignUp',
       component: SignUp
     },
     {
-      path: '/Show',
+      path: '/photos/:id',
       name: 'Show',
       component: Show
     },
     {
-      path: '/Edit',
+      path: '/photos/edit/:id',
       name: 'Edit',
       component: Edit
     },
     {
-      path: '/New',
+      path: '/photos/new',
       name: 'New',
       component: New
     }
