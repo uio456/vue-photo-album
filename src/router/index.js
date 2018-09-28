@@ -9,6 +9,7 @@ import Login from '@/components/Login'
 import SignUp from '@/components/SignUp'
 import Show from '@/components/Show'
 import Edit from '@/components/Edit'
+import New from '@/components/New'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
       path: '/Edit',
       name: 'Edit',
       component: Edit
+    },
+    {
+      path: '/New',
+      name: 'New',
+      component: New
     }
   ]
 })
