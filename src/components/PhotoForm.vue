@@ -64,6 +64,7 @@ import Datepicker from "vuejs-datepicker";
       };
       console.log("photo form submit");
       console.dir(payload);
+      this.$emit("photo-form-submit", payload);
     }
   }
 };
