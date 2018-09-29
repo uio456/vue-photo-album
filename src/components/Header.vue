@@ -7,7 +7,7 @@
     <p class="signup-btn btn" @click="handleSignUp">Sign up</p>
   </div>
   <div class="user-login-container" v-else>
-    <p class="user-email">{{ userEmail._value }}</p>
+    <p class="user-email">{{ userEmail }}</p>
     <p class="login-btn btn" @click="handleLogout">Log out</p>
   </div>
 </div>
@@ -62,7 +62,7 @@ export default {
         this.isLogin = true;
         this.userEmail = JSON.parse(
           localStorage.getItem("photo-album-user")
-          ).email;
+          ).email._value;
       } else {
         this.isLogin = false;
         this.userEmail = "";
