@@ -22,6 +22,7 @@ export default {
         .then(function(res) {
           console.log("login success!");
           console.log(res.data.auth_token);
+          console.log(payload);
           // save to localstorage
           var authToken = res.data.auth_token;
           var eamil = payload.email;

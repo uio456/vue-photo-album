@@ -13,6 +13,7 @@
 </div>
 </template>
  <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -29,13 +30,30 @@ export default {
       this.$router.push("/photos/new");
     },
     handleSignUp: function() {
-      this.$router.push("signup");
+      this.$router.push("/signup");
     },
     handleLogin: function() {
-      this.$router.push("login");
+      this.$router.push("/login");
     },
     handleLogout: function() {
       console.log("logout");
+      var sessionData = JSON.parse(localStorage.getItem("photo-album-user"));
+      if (sessionData == null) {
+        return;
+      }
+      var token = sessionData.authToken;
+      var url = "http://35.185.111.183/api/v1/logout";
+      axios
+        .post(url, { auth_token: token })
+        .then(function(res) {
+          console.log(res);
+        })
+        .catch(function(err) {
+          console.error(err.response.data.errors);
+      });
+      this.$bus.$emit("auth-state", { action: "logout" });
+      localStorage.removeItem("photo-album-user");
+      this.$router.push("/");
     },
     handleAuthState: function(payload) {
       console.dir(payload);
