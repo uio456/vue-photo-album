@@ -1,17 +1,24 @@
 <template>
 <div class="container">
   <div class="item-list" v-for="photo in photos">
-    <itemListElement :isLogin="isLogin"/>
+    <item-list-element 
+      :isLogin="isLogin"
+      :id ="photo.id"
+      :title ="photo.title"
+      :description ="photo.description"
+      :url ="'http://35.185.111.183'+photo.file_location.url" 
+      />
   </div>
 </div>
 </template>
  <script>
 import ItemListElement from "@/components/ItemListElement";
+import axios from "axios";
 export default {
   data: function() {
     return {
       isLogin: false,
-      photos: [1, 2, 3, 4, 5]
+      photos: []
     };
   },
   components: {
@@ -35,6 +42,19 @@ export default {
     } else {
       this.handleAuthState({ action: "logout" });
     }
+
+    // get photos from api
+    var indexUrl = "http://35.185.111.183/api/v1/photos";
+    var hostUrl = "http://35.185.111.183/";
+    var that = this;
+    axios
+    .get(indexUrl, {})
+    .then(function(res) {
+      that.photos = res.data.data;
+    })
+    .actch(function(err) {
+      console.error(err.response.data);
+    }); 
   },
   beforDestroy() {
     this.$but.$off("auth-state", this.handleAuthState);
