@@ -52,7 +52,7 @@ export default {
     .then(function(res) {
       that.photos = res.data.data;
     })
-    .actch(function(err) {
+    .catch(function(err) {
       console.error(err.response.data);
     }); 
   },
