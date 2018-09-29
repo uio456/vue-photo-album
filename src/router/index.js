@@ -51,6 +51,11 @@ export default new Router({
       component: SignUp
     },
     {
+      path: '/photos/new',
+      name: 'New',
+      component: New
+    },
+    {
       path: '/photos/:id',
       name: 'Show',
       component: Show
@@ -60,10 +65,6 @@ export default new Router({
       name: 'Edit',
       component: Edit
     },
-    {
-      path: '/photos/new',
-      name: 'New',
-      component: New
-    }
+    
   ]
 })
