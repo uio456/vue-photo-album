@@ -27,7 +27,7 @@ export default {
           var authToken = res.data.auth_token;
           var eamil = payload.email;
           var sessionData = { authToken: authToken, email: email };
-          localStorage.setItem("photo.album-user", JSON.stringify(sessionData));
+          localStorage.setItem("photo-album-user", JSON.stringify(sessionData));
           // emit auth-state to $bus
           that.$bus.$emit("auth-state", { action: "login" });
           // then go to index page
