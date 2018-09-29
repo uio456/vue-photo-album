@@ -1,7 +1,8 @@
 <template>
 <div class="show">
   <div class="photo-container">
-    <ImgDisplay/>
+    <ImgDisplay :url="url" v-if="url!='' && url != null " />
+    <!-- 如果 url 不是空的 也不是null 在把img傳給ImgDisplay  -->
   </div>
   <div class="main-container">
     <h3 class="main-title">{{title}}</h3>
@@ -12,18 +13,42 @@
 </template>
  <script>
 import ImgDisplay from "@/components/ImgDisplay";
+import axios from "axios";
 export default {
   data: function() {
     return {
-      title: "title",
+      title: "",
       description:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, cupiditate.",
+        "",
       url: "",
-      date: "2018-01-01"
+      date: ""
     };
   },
   components: {
     ImgDisplay: ImgDisplay
+  },
+  created() {
+    var that = this;
+    var id = this.$route.params.id;
+    var showUrl = "http://35.185.111.183/api/v1/photos/" + id;
+
+    if (localStorage.getItem("photo-album-user")) {
+      var token = JSON.parse(localStorage.getItem("photo-album-user")).authToken;
+      var params = { auth_token: token };
+    }
+
+    axios
+    .get(showUrl, { params })
+    .then(function(res){
+      that.title = res.data.title;
+      that.data = res.data.data;
+      that.description = res.data.description;
+      that.url = "http://35.185.111.183" + res.data.file_location.url;
+    })
+    .actch(function(err) {
+      console.error(err.response.data);
+      that.$router.push("/login");
+    })
   }
 };
 </script>
