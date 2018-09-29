@@ -1,5 +1,5 @@
 <template>
-  <div class="auth-panel">
+  <div class="auth-panel" @keypress.enter.prevent="handleSubmit">
     <h1>Please {{ content }}</h1>
     <input type="email" name="email" id="email" placeholder="Email Address" v-model="email">
     <input type="password" name="password" id="password" placeholder="Password" v-model="password">
