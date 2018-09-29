@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="item-list" v-for="photo in photos">
-    <itemListElement/>
+    <itemListElement :isLogin="isLogin"/>
   </div>
 </div>
 </template>
@@ -16,6 +16,28 @@ export default {
   },
   components: {
     ItemListElement: ItemListElement
+  },
+  methods: {
+    handleAuthState: function(payload) {
+      var action = payload.action;
+      if (action == "login") {
+        this.isLogin = true;
+      } else if (action == "logout") {
+        this.isLogin = false;
+      }
+    }
+  },
+  created() {
+    this.$bus.$on("auth-state", this.handleAuthState);
+    var sessionData = JSON.parse(localStorage.getItem("photo-album-user"));
+    if (!!sessionData) {
+      this.handleAuthState({ action: "login" });
+    } else {
+      this.handleAuthState({ action: "logout" });
+    }
+  },
+  beforDestroy() {
+    this.$but.$off("auth-state", this.handleAuthState);
   }
 };
 </script>
