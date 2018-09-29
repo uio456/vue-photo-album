@@ -7,7 +7,7 @@
     <p class="signup-btn btn" @click="handleSignUp">Sign up</p>
   </div>
   <div class="user-login-container" v-else>
-    <p class="user-email">{{ userEmail }}</p>
+    <p class="user-email">{{ userEmail._value }}</p>
     <p class="login-btn btn" @click="handleLogout">Log out</p>
   </div>
 </div>
@@ -19,7 +19,7 @@ export default {
     return {
       title: "Photo Album",
       isLogin: false,
-      userEmail: "Duncan@123.123"
+      userEmail: ""
     };
   },
   methods: {
@@ -53,7 +53,7 @@ export default {
       });
       this.$bus.$emit("auth-state", { action: "logout" });
       localStorage.removeItem("photo-album-user");
-      this.$router.push("/");
+      this.$router.push("/login");
     },
     handleAuthState: function(payload) {
       console.dir(payload);
