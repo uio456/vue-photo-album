@@ -34,7 +34,7 @@ export default {
     patchUpdate: function(payload) {
       var that = this;
       var id = this.$route.params.id
-      var updateUrl = "http://35.185.111.183/api/v1/photos" + id;
+      var updateUrl = "http://35.185.111.183/api/v1/photos/" + id;
       var token = JSON.parse(localStorage.getItem("photo-album-user")).authToken;
 
       // pack params using FormData
