@@ -30,6 +30,8 @@
         const payload = {
           email: this.email,
           password: this.password
+      // 把email 跟password 打包起來成 payload
+      // 然後 auth-panel-submit 跟 payload 啟動下一步。
         };
         this.$emit("auth-panel-submit", payload);
         console.log("submit auth")

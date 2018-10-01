@@ -1,6 +1,7 @@
 <template>
 <div class="login">
   <AuthPanel type="signup" @auth-panel-submit="handleSignUp" />
+  <!-- type="signup" 會傳入AuthPanel協助判斷狀態 -->
 </div>
 </template>
 

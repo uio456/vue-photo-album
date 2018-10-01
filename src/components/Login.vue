@@ -1,6 +1,7 @@
 <template>
 <div class="login">
   <AuthPanel type="login" @auth-panel-submit="handleLogin" />
+  <!-- type="login" 會傳入AuthPanel協助判斷狀態 -->
 </div>
 </template>
 
@@ -14,6 +15,7 @@ export default {
   },
   methods: {
     handleLogin: function(payload) {
+      // payload 從AuthPanel 發送來。
       console.log("handleLogin");
       var that = this;
       var url = "http://35.185.111.183/api/v1/login";

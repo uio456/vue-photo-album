@@ -22,6 +22,7 @@ export default {
         "",
       url: "",
       date: ""
+      // 這裡雖然是空的，但有透過 axios 在crated() 向遠端API拿取資料
     };
   },
   components: {

@@ -1,7 +1,10 @@
 <template>
   <div id="app">
   <Header />
+  <!-- Header.vue 會一直出現在Navbar 所以直接引進App.vue裡 -->
+  <!-- 其他的都透過 router-view引進 -->
     <router-view/>
+
   </div>
 </template>
 

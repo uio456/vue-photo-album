@@ -1,6 +1,9 @@
 <template>
   <div>
     <div id="img-panel" :style="imgShow">
+      <!-- 找不到 style 從哪裡來
+           style 本身是 HTML 屬性，綁上vue的 v-bind 動態屬性
+       -->
     </div>
   </div>
 </template>

@@ -64,6 +64,8 @@ export default {
   created() {
     var that = this;
     var id = this.$route.params.id;
+    // this.$route.params.id 類似 rails params[:id]
+    // 可拿取網址中 :id 參數
     var url = "http://35.185.111.183/api/v1/photos/" + id;
 
     var token = JSON.parse(localStorage.getItem("photo-album-user")).authToken;

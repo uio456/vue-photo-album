@@ -30,6 +30,7 @@
 import Datepicker from "vuejs-datepicker";
  export default {
   props: {
+    // 接收 New 跟 Edit 的 title.description屬性
     title: {
       type: String,
       default: ""
@@ -53,9 +54,12 @@ import Datepicker from "vuejs-datepicker";
   methods: {
     handleFileChange(e) {
       this.file = e.target.files[0];
+      // e.target 指向上傳檔案的input標籤
+      // 只會上傳一張圖片，用 e.target.file[0] 取得檔案陣列中的第一個元素
       console.log(this.file);
     },
     handleSubmit: function() {
+      // 使用者輸入的資料包成 payload
       var payload = {
         title: this.newTitle,
         date: this.newDate,
