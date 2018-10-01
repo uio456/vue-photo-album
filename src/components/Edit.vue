@@ -75,6 +75,11 @@ export default {
     .get(url, { params })
     .then(function(res) {
       that.photo = res.data;
+      that.title = res.data.title
+      that.description = res.data.description
+      console.log(res.data);
+      // console.log(that.title);
+      // console.log(that.description);
     })
     .catch(function(err) {
       console,error(err.response.data);
