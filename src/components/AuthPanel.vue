@@ -29,6 +29,8 @@
       handleSubmit: function() {
         const payload = {
           email: this.email,
+          // 透過 input 表單裡的v-model 取得 email password
+          // 打包起來發送出去 payload
           password: this.password
       // 把email 跟password 打包起來成 payload
       // 然後 auth-panel-submit 跟 payload 啟動下一步。

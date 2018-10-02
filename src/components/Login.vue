@@ -30,7 +30,13 @@ export default {
           var eamil = payload.email;
           var sessionData = { authToken: authToken, email: email };
           localStorage.setItem("photo-album-user", JSON.stringify(sessionData));
+          // localStorage.setItem 可儲存在是Web瀏覽器中
+          // 第一個參數是名稱，第二個參數是資料
+          // 用JSON.stringify()將資料轉成JSON格式字串
+          // 用JSON.parse(myJSON) 將資料轉回原本格式
+
           // emit auth-state to $bus
+          // 發給 Index Header 接收
           that.$bus.$emit("auth-state", { action: "login" });
           // then go to index page
           that.$router.push("/");

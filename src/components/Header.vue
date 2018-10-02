@@ -82,6 +82,7 @@ export default {
     }
   },
   beforeDestroy: function() {
+    // 如果不解除監聽每次到Header 都會在監聽一次？影響效能？
     this.$bus.$off("auth-state", this.handleAuthState)
   }
 };

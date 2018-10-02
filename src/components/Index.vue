@@ -42,6 +42,8 @@ export default {
   },
   created() {
     this.$bus.$on("auth-state", this.handleAuthState);
+    // $bus.$on 接收login.vue 跟 header.vue 裡的 logout 發出的 $emit
+    // 啟動上方的 handleAuthState 方法。
     var sessionData = JSON.parse(localStorage.getItem("photo-album-user"));
     if (!!sessionData) {
       this.handleAuthState({ action: "login" });
