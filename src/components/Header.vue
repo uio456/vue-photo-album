@@ -52,6 +52,7 @@ export default {
           console.error(err.response.data.errors);
       });
       this.$bus.$emit("auth-state", { action: "logout" });
+      // 上面這行可以拿掉，因為底下那行就會移除 user 資料了。
       localStorage.removeItem("photo-album-user");
       this.$router.push("/login");
     },

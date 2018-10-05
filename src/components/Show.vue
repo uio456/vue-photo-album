@@ -3,6 +3,7 @@
   <div class="photo-container">
     <ImgDisplay :url="url" v-if="url!='' && url != null " />
     <!-- 如果 url 不是空的 也不是null 在把img傳給ImgDisplay  -->
+    <!-- 這裡傳給ImgDisplay的url，需跟遠端要資料，可能有時間差，所以加一個 v-if輔助正確顯示資料 -->
   </div>
   <div class="main-container">
     <h3 class="main-title">{{title}}</h3>
@@ -33,6 +34,9 @@ export default {
     var id = this.$route.params.id;
     var showUrl = "http://35.185.111.183/api/v1/photos/" + id;
 
+     // get token if user logged in
+     // 雖然沒有login 就不會有show button 可以按
+     // 但多一個判斷式可以增加保險。
     if (localStorage.getItem("photo-album-user")) {
       var token = JSON.parse(localStorage.getItem("photo-album-user")).authToken;
       var params = { auth_token: token };
